@@ -1,39 +1,37 @@
-name: Push All Files
-
 on:
   push:
     branches:
       - main
-
+       
 jobs:
 
   selenium:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.4.3
-      - name: Set up Python
-        uses: actions/setup-python@v2.5.2
-        with:
-          python-version: 3.8
-      - name: Install dependencies
-        run: |
-          pip install selenium
-      - name: Run tests
-        run: python homeStart.py
-
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        pip install selenium
+    - name: Run tests
+      run: python homeStart.py
+      
   copy-all-files:
     needs: selenium
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.3
+        uses: actions/checkout@v2
 
       - name: README
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.HTOKEN}}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
           source_file: 'README.md'
           destination_repo: 'Techtidy/my-appp-test'
@@ -43,9 +41,9 @@ jobs:
       - name: src
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{secrets.HTOKEN}}
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
         with:
-          source_file: 'src/**'
+          source_file: 'src/'
           destination_repo: 'Techtidy/my-appp-prod'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
