@@ -23,6 +23,7 @@ jobs:
       run: python homeStart.py
       
   copy-all-files:
+    needs: selenium
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
