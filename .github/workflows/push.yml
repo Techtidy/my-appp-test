@@ -20,7 +20,7 @@ jobs:
       run: |
         pip install selenium
     - name: Run tests
-      run:  homeStart.py
+      run: python homeStart.py
       
   copy-all-files:
     runs-on: ubuntu-latest
