@@ -6,25 +6,15 @@ from selenium.webdriver.support.expected_conditions import presence_of_element_l
 from selenium.common.exceptions import WebDriverException
 
 try:
-    # Use Chrome instead of Firefox
     with webdriver.Chrome() as driver:
-        # Update the URL to your site
         driver.get("https://techtidy.github.io/my-app-dev/")
-        
-        # Locate the search input field and send the search query
-        search_input = driver.find_element(By.NAME, "q")
-        search_input.send_keys("cheese" + Keys.RETURN)
-        
-        # Use WebDriverWait for waiting for the presence of the search results container
+        button = driver.find_element(By.ID, "myButton")
+        button.click()
         wait = WebDriverWait(driver, 10)
-        wait.until(presence_of_element_located((By.XPATH, '//div[@id="rcnt"]')))
-        
-        # Find all the search result links using a more specific XPath
-        results = driver.find_elements(By.XPATH, '//div[@class="tF2Cxc"]/div/a[@href]')
-        
-        # Print the search results
-        for i, elem in enumerate(results):
-            print(f'#{i + 1} {elem.text} ({elem.get_attribute("href")})')
+        wait.until(presence_of_element_located((By.XPATH, '//div[@id="myElementId"]')))
+        links = driver.find_elements(By.TAG_NAME, 'a')
+        for i, link in enumerate(links):
+            print(f'#{i + 1} Text: {link.text}, Href: {link.get_attribute("href")}')
 
 except WebDriverException as e:
     print(f"WebDriverException: {e}")
