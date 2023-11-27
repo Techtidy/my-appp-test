@@ -67,11 +67,4 @@ jobs:
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
 
-      - name: Push to Another Branch
-        run: |
-          cd Techtidy/my-appp-prod
-          git checkout -b deploy
-          git add .
-          git commit -m "Pushing changes to another-branch"
-          git push origin deploy
- 
+    
