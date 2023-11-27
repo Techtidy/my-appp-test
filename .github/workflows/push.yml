@@ -57,6 +57,15 @@ jobs:
           destination_repo: 'Techtidy/my-appp-prod'
           user_email: 'eng21ct0007@dsu.edu.in'
           user_name: 'hrk-2109'
+      - name: index
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{secrets.HTOKEN }}
+        with:
+          source_file: 'index.html'
+          destination_repo: 'Techtidy/my-appp-prod'
+          user_email: 'eng21ct0007@dsu.edu.in'
+          user_name: 'hrk-2109'
 
 
  
