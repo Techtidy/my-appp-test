@@ -19,7 +19,7 @@ jobs:
       run: |
         pip install selenium
     - name: Run tests
-      run: python test/tests.py
+      run: python test/homeStart.py
       
   copy-all-files:
     needs: selenium
